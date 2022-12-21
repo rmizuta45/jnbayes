@@ -1,0 +1,12 @@
+.history/*
+bayes_log/*
+pic/*
+rxmc/libs/__pycache__/*
+*.log
+*.pyc
+*.tif
+dt/np/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

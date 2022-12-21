@@ -43,7 +43,7 @@ def plt_Efree(pic_header,temp,E_free):
     plt.savefig(pic_name)
     plt.close()
     print(pic_name,"saved!")
-    return E_free_ave
+    return
 
 def save_meanE_log(log_header,mean_E_log):
     log_name = log_header+"_meanE.npy"    
@@ -69,7 +69,7 @@ def plt_meanE_log(pic_header,temp,mean_E_log):
     plt.savefig(pic_name)
     plt.close()
     print(pic_name,"saved!")        
-    return mean_E_log_ave
+    return
 
 
 def get_each_Y(X,fdic,mpar):

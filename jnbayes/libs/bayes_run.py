@@ -71,14 +71,16 @@ def run_bayesian(rx_cls:Rxmc_ctrl,sw_plt_finep_multi=True):
     sum_E_log = np.array([np.sum(E_log[:,burn_in_length+i*log_length:burn_in_length+(i+1)*log_length],axis=1) for i in range(num_par_1000)])
     mean_E_log = sum_E_log / log_length
     num_par_1000 = int((cycle-burn_in_length)/log_length)
-    E_free_ave = plt_Efree(picfile_header,temp,E_free)
-    mean_E_ave = plt_meanE_log(picfile_header,temp,mean_E_log)
+    E_free_ave = np.mean(E_free,axis=0)
+    mean_E_log_ave = np.mean(E_free,axis=0)
+    plt_Efree(picfile_header,temp,E_free)
+    plt_meanE_log(picfile_header,temp,mean_E_log)
     
     ######## MAP
     iE_min_rep = np.argmin(E_free[:,1:-1],axis=-1)+1
     iE_min_rep_ave = np.argmin(E_free_ave[1:-1],axis=-1)+1
     Ef_min = np.min(E_free[:,1:-1],axis=-1)
-    Ef_min_ave = np.min(mean_E_ave[1:-1],axis=-1)
+    Ef_min_ave = np.min(mean_E_log_ave[1:-1],axis=-1)
 
     noise_result = 1/(temp[iE_min_rep_ave])**0.5
     print("最適な逆温度のインデックス",iE_min_rep)

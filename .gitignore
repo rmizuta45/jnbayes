@@ -1,6 +1,7 @@
 .history/*
 bayes_log/*
 pic/*
+dt/*
 rxmc/libs/__pycache__/*
 *.log
 *.pyc

@@ -6,13 +6,10 @@ import numpy as np
 
 ########## bayesian-sub ##########
 
-def calc_free_energy(E_log,temp,cycle,bil,log_length,data_len,logfile_header,picfile_header):
+def calc_free_energy(E_log,mean_E_log,temp,num_par_1000,data_len,logfile_header):
     num_temp = len(E_log)
-    num_par_1000 = int((cycle-bil)/log_length)
     E_free = np.zeros(shape=(num_par_1000,num_temp))
 
-    sum_E_log = np.array([np.sum(E_log[:,bil+i*log_length:bil+(i+1)*log_length],axis=1) for i in range(num_par_1000)])
-    mean_E_log = sum_E_log / log_length
     for irep in range(1,num_temp):
         tmp = 0
         for irep_sum in range(irep):
@@ -20,10 +17,8 @@ def calc_free_energy(E_log,temp,cycle,bil,log_length,data_len,logfile_header,pic
         E_free[:,irep] = (tmp - (np.log(temp[irep]/2/np.pi)/2 )) * data_len
     save_Efree(logfile_header,E_free)
     save_meanE_log(logfile_header,mean_E_log)
-    E_free_ave = plt_Efree(picfile_header,temp,E_free)
-    mean_E_ave = plt_meanE_log(picfile_header,temp,mean_E_log)
 
-    return E_free, E_free_ave, mean_E_ave
+    return E_free
 
 
 def save_Efree(log_header,E_free):

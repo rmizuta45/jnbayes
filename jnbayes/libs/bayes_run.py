@@ -4,6 +4,8 @@ from jnbayes.libs.bayes_sub import calc_free_energy
 from jnbayes.libs.bayes_sub import plt_fit
 from jnbayes.libs.bayes_sub import valu_write
 from jnbayes.libs.bayes_sub import list_write
+from jnbayes.libs.bayes_sub import plt_Efree
+from jnbayes.libs.bayes_sub import plt_meanE_log
 from jnbayes.libs.plt_sub import plt_par_log
 from jnbayes.libs.rxmc_cls import Rxmc_ctrl
 from multiprocessing import Pool
@@ -65,8 +67,13 @@ def run_bayesian(rx_cls:Rxmc_ctrl,sw_plt_finep_multi=True):
         p_log = np.append(p_log,np_tmp,axis=2)
 
     ####### calc free energy
-    E_free, E_free_ave, mean_E_ave = calc_free_energy(E_log,temp,cycle,burn_in_length,log_length,data_len,logfile_header,picfile_header)
-
+    E_free = calc_free_energy(E_log,temp,cycle,burn_in_length,log_length,data_len,logfile_header)
+    sum_E_log = np.array([np.sum(E_log[:,burn_in_length+i*log_length:burn_in_length+(i+1)*log_length],axis=1) for i in range(num_par_1000)])
+    mean_E_log = sum_E_log / log_length
+    num_par_1000 = int((cycle-burn_in_length)/log_length)
+    E_free_ave = plt_Efree(picfile_header,temp,E_free)
+    mean_E_ave = plt_meanE_log(picfile_header,temp,mean_E_log)
+    
     ######## MAP
     iE_min_rep = np.argmin(E_free[:,1:-1],axis=-1)+1
     iE_min_rep_ave = np.argmin(E_free_ave[1:-1],axis=-1)+1

@@ -97,7 +97,8 @@ def plt_figures(rx_cls:Rxmc_ctrl, sw_plt_all_p_log=False, sw_plt_all_E_log=False
         np_tmp = np.load(tfile,allow_pickle=True)
         ratio_exc_rep_log = np.append(ratio_exc_rep_log,np_tmp,axis=1)        
     sum_exc_rep = np.sum(ratio_exc_rep_log[:,burn_in_length:],axis=1)
-    plt_exc_rep_log(picfile_header,model_name,temp,sum_exc_rep,cycle,burn_in_length)
+    ratio = sum_exc_rep/((cycle-burn_in_length)/2)
+    plt_exc_rep_log(picfile_header,model_name,temp,ratio)
 
     ########## stepsize vs temp
     stepsize_files = glob.glob(logfile_header+"*_stepsize.npy")

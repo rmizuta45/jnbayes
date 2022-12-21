@@ -1,5 +1,5 @@
-from nsbayes.libs.fitting_functions import func_db
-from nsbayes.libs.fitting_functions import smearing_gaus
+from jnbayes.libs.fitting_functions import func_db
+from jnbayes.libs.fitting_functions import smearing_gaus
 import numpy as np
 
 def get_fitting_container(fdict):

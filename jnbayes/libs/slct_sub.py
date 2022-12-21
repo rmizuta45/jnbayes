@@ -1,5 +1,5 @@
-from nsbayes.libs.etc_sub import COLOER_MAP
-from nsbayes.libs.bayes_sub import get_each_Y
+from jnbayes.libs.etc_sub import COLOER_MAP
+from jnbayes.libs.bayes_sub import get_each_Y
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np

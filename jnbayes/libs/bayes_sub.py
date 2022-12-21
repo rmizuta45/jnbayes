@@ -1,6 +1,6 @@
-from nsbayes.libs.fitting_functions import func_db
-from nsbayes.libs.fitting_functions import ngaus
-from nsbayes.libs.etc_sub import COLOER_MAP
+from jnbayes.libs.fitting_functions import func_db
+from jnbayes.libs.fitting_functions import ngaus
+from jnbayes.libs.etc_sub import COLOER_MAP
 import matplotlib.pyplot as plt
 import numpy as np
 

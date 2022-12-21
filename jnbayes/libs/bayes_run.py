@@ -1,13 +1,13 @@
 """bayesian program(main)
 """
-from nsbayes.libs.bayes_sub import calc_free_energy
-from nsbayes.libs.bayes_sub import plt_fit
-from nsbayes.libs.bayes_sub import valu_write
-from nsbayes.libs.bayes_sub import list_write
-from nsbayes.libs.plt_sub import plt_par_log
-from nsbayes.libs.rxmc_cls import Rxmc_ctrl
+from jnbayes.libs.bayes_sub import calc_free_energy
+from jnbayes.libs.bayes_sub import plt_fit
+from jnbayes.libs.bayes_sub import valu_write
+from jnbayes.libs.bayes_sub import list_write
+from jnbayes.libs.plt_sub import plt_par_log
+from jnbayes.libs.rxmc_cls import Rxmc_ctrl
 from multiprocessing import Pool
-from nsbayes.libs.etc_sub import NUM_OF_THIS_PC_MULTIPLE_CPU_CORES as NUM_CORE
+from jnbayes.libs.etc_sub import NUM_OF_THIS_PC_MULTIPLE_CPU_CORES as NUM_CORE
 import numpy as np
 import glob
 import os

@@ -1,11 +1,11 @@
 """plot figures(main)
 """
-from nsbayes.libs.plt_sub import plt_par_log, plt_step_temp
-from nsbayes.libs.plt_sub import plt_E_log
-from nsbayes.libs.plt_sub import plt_p_ratio
-from nsbayes.libs.plt_sub import plt_exc_rep_log
-from nsbayes.libs.rxmc_cls import Rxmc_ctrl
-from nsbayes.libs.etc_sub import NUM_OF_THIS_PC_MULTIPLE_CPU_CORES as NUM_CORE
+from jnbayes.libs.plt_sub import plt_par_log, plt_step_temp
+from jnbayes.libs.plt_sub import plt_E_log
+from jnbayes.libs.plt_sub import plt_p_ratio
+from jnbayes.libs.plt_sub import plt_exc_rep_log
+from jnbayes.libs.rxmc_cls import Rxmc_ctrl
+from jnbayes.libs.etc_sub import NUM_OF_THIS_PC_MULTIPLE_CPU_CORES as NUM_CORE
 from multiprocessing import Pool, log_to_stderr
 import glob
 import numpy as np

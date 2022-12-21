@@ -28,7 +28,6 @@ def plt_par_log(pic_header,irep,ipar,tmp_log):
     plt.xlabel("Iteration number")
     plt.subplot(1,2,2)
     plt.hist(tmp_log,bins=40)
-    # plt.yscale("log")
     plt.xlabel(par_str)
     plt.ylabel("Cnt")
     plt.savefig(pic_name)
@@ -68,7 +67,6 @@ def plt_E_log(pic_header,irep,tmp_log):
     plt.xlabel("Iteration number")
     plt.subplot(1,2,2)
     plt.hist(tmp_log,bins=40)
-    # plt.yscale("log")
     plt.xlabel("E")
     plt.ylabel("Cnt")
     plt.savefig(pic_name)
@@ -82,8 +80,6 @@ def plt_exc_rep_log(pic_header,model_name,temp,sum_exc_rep,cycle,burn_in_length)
     plt.figure()
     plt.hlines(1.0,min(temp[1:-1]),max(temp[1:-1]),colors="gray")
     plt.hlines(0.0,min(temp[1:-1]),max(temp[1:-1]),colors="gray")
-    # plt.plot(temp[1:-1],sum_exc_rep[1:-1]/((cycle-burn_in_length)/2))
-    # plt.scatter(temp[1:-1],sum_exc_rep[1:-1]/((cycle-burn_in_length)/2),s=3)
     ratio = sum_exc_rep/((cycle-burn_in_length)/2)
     plt.plot(temp[1:-1],ratio[1:-1])
     plt.scatter(temp[1:-1],ratio[1:-1],s=3)
@@ -113,9 +109,5 @@ def plt_step_temp(pic_header,ipar,temp,stepsize):
     plt.savefig(pic_name)
     plt.close()
     print(pic_name,"saved!")
-
-
-
-
 
     return

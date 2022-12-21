@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from nsbayes.libs.rxmc_cls import Rxmc_ctrl
+from jnbayes.libs.rxmc_cls import Rxmc_ctrl
 
 
 COLOER_MAP = ["darkorange","b","g","magenta","saddlebrown","c","olive","navy","lime","teal","pink","tan","gold",]

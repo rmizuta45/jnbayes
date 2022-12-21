@@ -1,14 +1,14 @@
 import shutil
 import numpy as np
-from nsbayes.libs.slct_sub import calc_prob
-from nsbayes.libs.slct_sub import plt_Efree_result
-from nsbayes.libs.slct_sub import plt_adpt_result
-from nsbayes.libs.slct_sub import plt_fine_rep_result
-from nsbayes.libs.slct_sub import plt_stepsize_result
-from nsbayes.libs.slct_sub import plt_exc_ratio_result
-from nsbayes.libs.slct_sub import show_all_MAP
-from nsbayes.libs.etc_sub import make_directory as mk_dir
-from nsbayes.libs.rxmc_cls import Rxmc_ctrl
+from jnbayes.libs.slct_sub import calc_prob
+from jnbayes.libs.slct_sub import plt_Efree_result
+from jnbayes.libs.slct_sub import plt_adpt_result
+from jnbayes.libs.slct_sub import plt_fine_rep_result
+from jnbayes.libs.slct_sub import plt_stepsize_result
+from jnbayes.libs.slct_sub import plt_exc_ratio_result
+from jnbayes.libs.slct_sub import show_all_MAP
+from jnbayes.libs.etc_sub import make_directory as mk_dir
+from jnbayes.libs.rxmc_cls import Rxmc_ctrl
 
 
 ######## M O D E L   S E L E C T ########

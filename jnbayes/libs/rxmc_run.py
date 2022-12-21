@@ -1,14 +1,14 @@
 """RXMC program(main)
 """
 
-from nsbayes.libs.rxmc_sub import get_Y
-from nsbayes.libs.rxmc_sub import get_Energy
-from nsbayes.libs.rxmc_sub import get_fitting_container
-from nsbayes.libs.rxmc_sub import exc_replica
-from nsbayes.libs.rxmc_sub import renew_E_log
-from nsbayes.libs.rxmc_sub import renew_p_log
-from nsbayes.libs.rxmc_sub import update_param
-from nsbayes.libs.rxmc_cls import Rxmc_ctrl
+from jnbayes.libs.rxmc_sub import get_Y
+from jnbayes.libs.rxmc_sub import get_Energy
+from jnbayes.libs.rxmc_sub import get_fitting_container
+from jnbayes.libs.rxmc_sub import exc_replica
+from jnbayes.libs.rxmc_sub import renew_E_log
+from jnbayes.libs.rxmc_sub import renew_p_log
+from jnbayes.libs.rxmc_sub import update_param
+from jnbayes.libs.rxmc_cls import Rxmc_ctrl
 import numpy as np
 import time
 import gc

@@ -150,7 +150,8 @@ def plt_fit(X,Y,mpar,fdic,min_rep,min_cycle,pic_header,invertX=False):
     plt.title(f"MAP (rep={min_rep}, cycle={min_cycle})")
     plt.plot(X,Y,c="k")
     plt.plot(X,Yfit,c="r")
-    plt.plot(X,Ybg,c="gray")    
+    if not all(Ys["BG"] == np.zeros(Y.shape)):
+        plt.plot(X,Ybg,c="gray")    
     if invertX:
         plt.gca().invert_xaxis()
     for ipeak in range(num_peak):

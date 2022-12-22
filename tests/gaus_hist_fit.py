@@ -11,7 +11,7 @@ def align_digit(f, digit=None,shift=3):
     else: s = str(f)
     return s, digit
 
-def fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_plot, show_result):
+def fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_result):
 
     '''
     return chi2, constant, error, mean, error, sigma, error, degree of freedom, p-value
@@ -40,7 +40,7 @@ def fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_plot, show_res
     arr_fitted_y = gaussian_func(np.array(arr_x2), popt[0], popt[1], popt[2]) 
 
     from scipy.stats import chisquare
-    chisq, p = chisquare(f_exp=arr_y2, f_obs=arr_fitted_y, ddof = 2)
+    #chisq, p = chisquare(f_exp=arr_y2, f_obs=arr_fitted_y, ddof = 2)
     ndf = len(arr_x2) - 3
 
     mat = np.vstack((popt,stderr)).T
@@ -49,36 +49,13 @@ def fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_plot, show_res
         df = pd.DataFrame(mat,index=("Constant", "Mean", "Sigma"), columns=("Estimate", "Std. error"))
         print(df)
 
-    if show_plot:
-        import matplotlib.pyplot as plt
-        plt.errorbar(arr_x,arr_y,linestyle="None",marker="+",yerr=arr_yerror,label="Data",color="tab:blue")
 
-        arr_curve = gaussian_func(np.array(arr_x),popt[0],popt[1],popt[2])
-        str_popt0, digit_popt0 = align_digit(popt[0])
-        str_popt1, digit_popt1 = align_digit(popt[1])
-        str_popt2, digit_popt2 = align_digit(popt[2])
-        str_serr0, _ = align_digit(stderr[0], digit_popt0)
-        str_serr1, _ = align_digit(stderr[1], digit_popt1)
-        str_serr2, _ = align_digit(stderr[2], digit_popt2)
-        plt.plot(arr_x,arr_curve,color="tab:orange",
-                label=str("Fitted\n$\\chi^2$/ndf: {0:.2f}/{1}\n"+
-                          "Constant: {2}$\\pm${3}\n"+
-                          "Mean: {4}$\\pm${5}\n"+
-                          "Sigma: {6}$\\pm${7}").format(chisq,ndf,
-                                                    str_popt0,str_serr0,
-                                                    str_popt1,str_serr1,
-                                                    str_popt2,str_serr2))
-        plt.legend(bbox_to_anchor=(1.12, 1.15), loc='upper right', borderaxespad=0)
-        plt.savefig("fit.pdf")
-        plt.show()
     
     obj = {}
-    obj["chi2"]    =chisq
     obj["constant"]=[popt[0],stderr[0]]
     obj["mean"]    =[popt[1],stderr[1]]
     obj["sigma"]   =[popt[2],stderr[2]]
     obj["ndf"]     =ndf
-    obj["pvalue"]  =p
     return obj
 
 def fit_gaussian(vx, nbin, min_x, max_x,*,mean_value=None,stdev_value=None,show_plot=False,show_result=True):
@@ -120,7 +97,7 @@ def fit_gaussian(vx, nbin, min_x, max_x,*,mean_value=None,stdev_value=None,show_
         plt.show()
 
         
-    return fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_plot, show_result)
+    return fit_gaussian_impl(arr_x, arr_y, mean_value, stdev_value, show_plot)
 
 
 

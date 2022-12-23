@@ -26,11 +26,16 @@ def read_xy_slice_data(rxcls:Rxmc_ctrl, check=False):
         1. load XY data as numpy array(1d)
         2. register XY data in Rxmc_ctrl
 
-    """
+    """    
+    ### X,Yデータを読んでクラスに登録する
+    ### jsonに登録されているPATHからデータをロード
     data = np.load(rxcls.dt_dt_name)
     Xraw = data[0]
+    ### データの3列目以降がある場合、Yの配列に足して計算する
     Ys = data[1:]
     Yraw = np.sum(Ys,axis=0)
+    
+    ### クラス内関数で登録
     rxcls.register_reshape_XYslice(Xraw, Yraw)
     if check:
         print(Xraw,Yraw)

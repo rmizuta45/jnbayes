@@ -7,14 +7,17 @@ import numpy as np
 ########## bayesian-sub ##########
 
 def calc_free_energy(E_log,mean_E_log,temp,num_par_1000,data_len,logfile_header):
+    ### ベイズ自由エネルギーの計算
     num_temp = len(E_log)
     E_free = np.zeros(shape=(num_par_1000,num_temp))
-
+    
+    ### 普通の積分計算(論文参照のこと)
     for irep in range(1,num_temp):
         tmp = 0
         for irep_sum in range(irep):
             tmp += (temp[irep_sum+1] - temp[irep_sum])*mean_E_log[:,irep_sum+1]
         E_free[:,irep] = (tmp - (np.log(temp[irep]/2/np.pi)/2 )) * data_len
+    # .npyに保存
     save_Efree(logfile_header,E_free)
     save_meanE_log(logfile_header,mean_E_log)
 
